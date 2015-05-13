@@ -36,7 +36,7 @@
                 }
                 fclose($handle);
             }
-            //print_r($group);
+            print_r($group);
     		echo "<br>";
             function sd_square($x, $mean) { return pow($x - $mean,2); }
             function sd($array) { return sqrt(array_sum(array_map("sd_square", $array, array_fill(0,count($array), (array_sum($array) / count($array)) ) ) ) / (count($array)-1) );   }
