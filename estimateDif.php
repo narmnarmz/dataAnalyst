@@ -22,9 +22,26 @@
     	<h2>ผลการประมาณผลต่างระหว่างค่าเฉลี่ยของประชากรสองชุด (µ1-µ2)</h2>
     	<?php 
 
-            $data = array_map('str_getcsv', file('uploads/data.csv'));
+            //$data = array_map('str_getcsv', file('uploads/data.csv'));
             $tTable = array_map('str_getcsv', file('uploads/t-table.csv'));
-            print_r($data);
+            $file= fopen("uploads/data.csv", "r");
+            $data = fgetcsv($file);
+
+            $row = 1;
+            $group = array();
+            if (($handle = fopen("uploads/data.csv", "r")) !== FALSE) {
+                while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                    $num = count($data);
+                    $row++;
+                    for ($c=0; $c < $num; $c++) {
+                        if ($c==0) {
+                            $group[$data[0]][] = $data[1];
+                        }
+                    }
+                }
+                fclose($handle);
+            }
+            print_r($group);
 
             function sd_square($x, $mean) { return pow($x - $mean,2); }
             function sd($array) { return sqrt(array_sum(array_map("sd_square", $array, array_fill(0,count($array), (array_sum($array) / count($array)) ) ) ) / (count($array)-1) );   }
@@ -40,10 +57,11 @@
                 <tr>
                     <td>µ1</td>
                     <?php 
-                    $v1=sd($data[0])*sd($data[0]);
-                    $mean1=array_sum($data[0])/count($data[0]);
-                    echo "<td>".count($data[0])."</td>";
-                    echo "<td>".sd($data[0])."</td>";
+                    $key = array_keys($group);
+                    $v1=sd($group[$key[0]])*sd($group[$key[0]]);
+                    $mean1=array_sum($group[$key[0]])/count($group[$key[0]]);
+                    echo "<td>".count($group[$key[0]])."</td>";
+                    echo "<td>".sd($group[$key[0]])."</td>";
                     echo "<td>".$v1."</td>";
                     echo "<td>".$mean1."</td>";
                      ?>
@@ -51,10 +69,10 @@
                 <tr>
                     <td>µ2</td>
                     <?php 
-                    $v2=sd($data[1])*sd($data[1]);
-                    $mean2=array_sum($data[1])/count($data[1]);
-                    echo "<td>".count($data[1])."</td>";
-                    echo "<td>".sd($data[1])."</td>";
+                    $v2=sd($group[$key[1]])*sd($group[$key[1]]);
+                    $mean2=array_sum($group[$key[1]])/count($group[$key[1]]);
+                    echo "<td>".count($group[$key[1]])."</td>";
+                    echo "<td>".sd($group[$key[1]])."</td>";
                     echo "<td>".$v2."</td>";
                     echo "<td>".$mean2."</td>";
                      ?>
@@ -91,8 +109,8 @@
                     <?php 
                     $rel = array("90%", "95%", "98%", "99%", "99.8%" ,"99.9%");
                     $sig = array(0.1, 0.05, 0.02, 0.01, 0.002 ,0.001);
-                    $n1 = count($data[0]);
-                    $n2 = count($data[1]);
+                    $n1 = count($group[$key[0]]);
+                    $n2 = count($group[$key[1]]);
                     $df = $n1+$n2-3;
                     if ($df >= 200) {
                         $df=200;
