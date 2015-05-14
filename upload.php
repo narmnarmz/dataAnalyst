@@ -36,8 +36,15 @@
 
 		<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#estimatePDiff">
 		  Estimate (P1-P2)
+		</button> <br><br>
+
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#assumptionU">
+		  Assumption (µ)
 		</button>
 
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#assumptionP">
+		  Assumption (P)
+		</button><br><br>
 
 <!-- sopon's code -->
 		<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#oneAnova">
@@ -269,6 +276,7 @@
 			  </div>
 			</div>
 		</form>
+
 		<form action="AnovaTwo.php" method="POST">
 			<div class="modal fade bs-example-modal-sm" id="twoAnova" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-sm">
@@ -285,6 +293,36 @@
 			        </select>
 
 			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <input type="submit" value="Submit" class="btn btn-primary">
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</form>
+
+		<form action="assumptionU.php" method="POST">
+			<div class="modal fade bs-example-modal-sm" id="twoAnova" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-sm">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Assumption (µ)</h4>
+			      </div>
+			      <div class="modal-body">
+			        Input Reliability
+			        <select name="sig" class="form-control">
+			        	<option value="0">90%</option>
+			        	<option value="1">95%</option>
+			        </select>
+			      </div>
+			      <div class='form-group'>;
+				  <label for='inputEmail3' class='col-sm-2 control-label'>Test Value</label>;
+						<div class='col-sm-10'>;
+							<input name='testValue' type='text' class='form-control' id='exampleInputEmail1' placeholder='000' required>";
+						</div>;
+				  </div>;
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			        <input type="submit" value="Submit" class="btn btn-primary">
