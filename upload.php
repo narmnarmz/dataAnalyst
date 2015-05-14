@@ -38,6 +38,18 @@
 		  Estimate (P1-P2)
 		</button>
 
+
+<!-- sopon's code -->
+		<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#oneAnova">
+		  One-Way Anova
+		</button>
+
+		<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#twoAnova">
+		  Two-Way Anova
+		</button>
+<!-- sopon's code -->
+
+
 		<?php
 			$uploaddir = "uploads/";
 			$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
@@ -221,6 +233,55 @@
 			        	<option value="0">90%</option>
 			        	<option value="1">95%</option>
 			        	<option value="2">99%</option>
+			        </select>
+
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <input type="submit" value="Submit" class="btn btn-primary">
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</form>
+
+		<form action="Anova.php" method="POST">
+			<div class="modal fade bs-example-modal-sm" id="oneAnova" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-sm">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Interval Estimate (µ)</h4>
+			      </div>
+			      <div class="modal-body">
+			        Input Reliability
+			        <select name="sig" class="form-control">
+			        	<option value="0">90%</option>
+			        	<option value="1">95%</option>
+			        </select>
+
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <input type="submit" value="Submit" class="btn btn-primary">
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</form>
+		<form action="AnovaTwo.php" method="POST">
+			<div class="modal fade bs-example-modal-sm" id="twoAnova" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-sm">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Interval Estimate (µ)</h4>
+			      </div>
+			      <div class="modal-body">
+			        Input Reliability
+			        <select name="sig" class="form-control">
+			        	<option value="0">90%</option>
+			        	<option value="1">95%</option>
 			        </select>
 
 			      </div>
