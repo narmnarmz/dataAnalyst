@@ -1,5 +1,6 @@
 <html>
     <head>
+        <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" href="assets/bootstrap.css" />
         <link rel="stylesheet" href="assets/style.css" />
