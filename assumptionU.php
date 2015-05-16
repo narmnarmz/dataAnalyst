@@ -19,7 +19,7 @@
         </nav>
         <h3 class="text-muted">Data Analyst for Business</h3>
     </div>
-    	<h2>ผลการประมาณค่าเฉลี่ยของประชากร (µ)</h2>
+    	<h2>ผลทดสอบสมมตฐานเกี่ยวกับค่าเฉลี่ยประชากรชุดเดียว (µ)</h2>
     	<?php 
     		$file= fopen("uploads/data.csv", "r");
     		$data = fgetcsv($file);
@@ -63,36 +63,36 @@
     	?>
             <table class="table table-bordered">
                 <tr class="active">
-                    <th>N</th>
-                    <th>Mean</th>
-                    <th>SD</th>
-                    <th>Reliability</th>
-                    <th>Sig.</th>
-                    <th>t</th>
-                    <th>Lower</th>
-                    <th>Upper</th>
+                    <th rowspan="2">N</th>
+                    <th rowspan="2">Mean</th>
+                    <th rowspan="2">SD</th>
+                    <th rowspan="2">Reliability</th>
+                    <th rowspan="2">t</th>
+                    <th colspan="3">α</th>
+                </tr>
+                <tr class="active">
+                    <th>1-tail</th>
+                    <th>Lower (2-tails)</th>
+                    <th>Upper (2-tails)</th>
                 </tr>
                 <tr>
                     <?php 
                     $rel = array("90%", "95%", "98%", "99%", "99.8%" ,"99.9%");
                     $sig = array(0.1, 0.05, 0.02, 0.01, 0.002 ,0.001);
+                    $onetail = array(1=>0,3=>2);
                     $n = count($group);
                     $mean = array_sum($group)/$n;
                     $sd = sd($group);
-                    try {
-                        $t=$tArray[$n-2][$_POST["sig"]];
-                    } catch (Exception $e) {
-                        $t=$tArray[200][$_POST["sig"]];
-                    }
+                    $t=($mean-$_POST['testValue'])/($sd/sqrt($n));
                     // $t=$tArray[$n-2][$_POST["sig"]];
                     echo "<td>".$n."</td>";
                     echo "<td>".number_format($mean,3,'.',',')."</td>";
                     echo "<td>".number_format($sd,3,'.',',')."</td>";
                     echo "<td>".$rel[$_POST["sig"]]."</td>";
-                    echo "<td>".$sig[$_POST["sig"]]."</td>";
-                    echo "<td>".$t."</td>";
-                    echo "<td>".number_format(($mean-($t*($sd/sqrt($n)))),3,'.',',')."</td>";
-                    echo "<td>".number_format(($mean+($t*($sd/sqrt($n)))),3,'.',',')."</td>";
+                    echo "<td>".number_format($t,3,'.',',')."</td>";
+                    echo "<td>".$tArray[$n-2][$onetail[$_POST['sig']]]."</td>";
+                    echo "<td>"."-".$tArray[$n-2][$_POST["sig"]]."</td>";
+                    echo "<td>".$tArray[$n-2][$_POST["sig"]]."</td>";
                     echo "<br>";
                      ?>
                 </tr>

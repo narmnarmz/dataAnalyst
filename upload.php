@@ -316,7 +316,7 @@
 					<br>
 			        Input Reliability
 			        <select name="sig" class="form-control">
-			        	<option value="0">90%</option>
+			        	<option value="3">99%</option>
 			        	<option value="1">95%</option>
 			        </select>
 
