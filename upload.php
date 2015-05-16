@@ -195,6 +195,7 @@
 			  </div>
 			</div>
 		</form>
+
 		<form action="estimatePDiff.php" method="POST" class="form-horizontal">
 			<div class="modal" id="estimatePDiff" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			  <div class="modal-dialog">
@@ -321,6 +322,53 @@
 			        </select>
 
 				  </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <input type="submit" value="Submit" class="btn btn-primary">
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</form>
+
+		<form action="assumptionP.php" method="POST" class="form-horizontal">
+			<div class="modal" id="assumptionP" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">IntervalEstimate (P)</h4>
+			      </div>
+			      <div class="modal-body">
+
+					Group Setting<br>
+					<?php
+					$loop=0;
+					foreach (array_keys($group) as $paramName) {
+						$loop++;
+						if ($loop>2) {
+							break;
+						}
+						echo "<div class='form-group'>";
+						echo    "<label for='inputEmail3' class='col-sm-2 control-label'>Case: ".$paramName."</label>";
+						echo 	"<div class='col-sm-10'>";
+						echo    	"<input name='groupName".$paramName."' type='text' class='form-control' id='exampleInputEmail1' placeholder='Category Name' required>";
+						echo 	"</div>";
+						echo "</div>";
+					}	
+					?>
+					<hr>
+					Test Value
+					<input name='testValue' type='text' class='form-control' id='exampleInputEmail1' placeholder='000' required>
+					<br>
+			        Input Reliability
+			        <select name="sig" class="form-control">
+			        	<option value="0">90%</option>
+			        	<option value="1">95%</option>
+			        	<option value="2">99%</option>
+			        </select>
+
+			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			        <input type="submit" value="Submit" class="btn btn-primary">
