@@ -24,7 +24,7 @@
             $row = 1;
             $group = array();
             if (($handle = fopen("uploads/data.csv", "r")) !== FALSE) {
-                $data = fgetcsv($handle, 1000, ",");
+                //$data = fgetcsv($handle, 1000, ",");
                 while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                     $num = count($data);
                     $row++;
