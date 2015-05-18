@@ -71,6 +71,7 @@
 			// print_r($_FILES);
 
 			$row = 1;
+			$groupuu = array();
 			$group = array();
 			if (($handle = fopen("uploads/data.csv", "r")) !== FALSE) {
 				echo "<h3>Your Data.</h3>";
@@ -84,6 +85,18 @@
 			            //echo $data[$c] . "<br />\n";
 			            echo "<td>".$data[$c]."</td>";
 
+			            //case u-u
+			            if ($c==0) {
+				            if (array_key_exists($data[0], $groupuu)) {
+				            	$groupuu[$data[0]] = $groupuu[$data[0]]+1;
+				            }
+				            else
+				            {
+				            	$groupuu[$data[0]] = 1;
+				            }
+			            }
+
+			            //other case
 			            if (array_key_exists($data[$c], $group)) {
 			            	$group[$data[$c]] = $group[$data[$c]]+1;
 			            } 
@@ -95,7 +108,7 @@
 			        echo "</tr>";
 			    }
 			    echo "</table>";
-			    //echo print_r($group);
+			    //echo print_r($groupuu);
 			    fclose($handle);
 			}
 
@@ -130,19 +143,38 @@
 		<!-- Modal -->
 		<form action="estimateDif.php" method="POST">
 			<div class="modal fade bs-example-modal-sm" id="estimateDif" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-sm">
+			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title" id="myModalLabel">Estimate (µ1-µ2)</h4>
 			      </div>
 			      <div class="modal-body">
+
+					Group Setting<br>
+					<?php
+					$loop=0;
+					foreach (array_keys($groupuu) as $paramName) {
+						$loop++;
+						if ($loop>2) {
+							break;
+						}
+						echo "<div class='form-group'>";
+						echo    "<label for='inputEmail3' class='col-sm-2 control-label'>Case: ".$paramName."</label>";
+						echo 	"<div class='col-sm-10'>";
+						echo    	"<input name='groupName".$loop."' type='text' class='form-control' id='exampleInputEmail1' placeholder='Category Name' required>";
+						echo 	"</div>";
+						echo "</div>";
+					}	
+					?>
+					<hr>
+
 			        Input Reliability
 			        <select name="sig" class="form-control">
 			        	<option value="0">90%</option>
 			        	<option value="1">95%</option>
 			        </select>
-
+					
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -158,7 +190,7 @@
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="myModalLabel">IntervalEstimate (P)</h4>
+			        <h4 class="modal-title" id="myModalLabel">Interval Estimate (P)</h4>
 			      </div>
 			      <div class="modal-body">
 
@@ -202,7 +234,7 @@
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="myModalLabel">IntervalEstimate (P1-P2)</h4>
+			        <h4 class="modal-title" id="myModalLabel">Interval Estimate (P1-P2)</h4>
 			      </div>
 			      <div class="modal-body">
 

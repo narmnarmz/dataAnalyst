@@ -42,7 +42,7 @@
                 }
                 fclose($handle);
             }
-            print_r($group);
+            //print_r($group);
 
             function sd_square($x, $mean) { return pow($x - $mean,2); }
             function sd($array) { return sqrt(array_sum(array_map("sd_square", $array, array_fill(0,count($array), (array_sum($array) / count($array)) ) ) ) / (count($array)-1) );   }
@@ -56,7 +56,7 @@
                     <th>MEAN</th>
                 </tr>
                 <tr>
-                    <td>µ1</td>
+                    <td>µ1 ( <?php echo $_POST['groupName1']; ?> )</td>
                     <?php 
                     $key = array_keys($group);
                     $v1=sd($group[$key[0]])*sd($group[$key[0]]);
@@ -68,7 +68,7 @@
                      ?>
                 </tr>
                 <tr>
-                    <td>µ2</td>
+                    <td>µ2 ( <?php echo $_POST['groupName2']; ?> )</td>
                     <?php 
                     $v2=sd($group[$key[1]])*sd($group[$key[1]]);
                     $mean2=array_sum($group[$key[1]])/count($group[$key[1]]);
