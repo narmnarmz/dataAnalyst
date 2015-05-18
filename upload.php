@@ -28,7 +28,7 @@
 		</button>
 		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#estimateDif">
 		  Estimate (µ1-µ2)
-		</button> <br><br>
+		</button>
 
 		<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#estimateP">
 		  Estimate (P)
@@ -36,24 +36,24 @@
 
 		<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#estimatePDiff">
 		  Estimate (P1-P2)
-		</button> <br><br>
+		</button>
 
-		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#assumptionU">
+		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#assumptionU">
 		  Assumption (µ)
 		</button>
 
-		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#assumptionP">
+		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#assumptionP">
 		  Assumption (P)
-		</button><br><br>
+		</button>
 
 <!-- sopon's code -->
-		<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#oneAnova">
+<!-- 		<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#oneAnova">
 		  One-Way Anova
 		</button>
 
 		<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#twoAnova">
 		  Two-Way Anova
-		</button>
+		</button> -->
 <!-- sopon's code -->
 
 
@@ -255,18 +255,6 @@
 						echo "</div>";
 					}
 					?>
-<!-- 					<div class='form-group'>
-						<label for='inputEmail3' class='col-sm-2 control-label'>Column 1</label>
-						<div class='col-sm-10'>
-							<input name='colName1' type='text' class='form-control' id='exampleInputEmail1' placeholder='Column Label' required>
-						</div>
-					</div>
-					<div class='form-group'>
-						<label for='inputEmail3' class='col-sm-2 control-label'>Column 2</label>
-						<div class='col-sm-10'>
-							<input name='colName2' type='text' class='form-control' id='exampleInputEmail1' placeholder='Column Label' required>
-						</div>
-					</div> -->
 					<hr>Column 2 Setting<br>
 					เลือกกรณีที่ต้องการประมาณผลต่างระหว่างสัดส่วน<br>
 					<?php
@@ -369,7 +357,7 @@
 			      </div>
 			      <div class="modal-body">
 					Test Value
-					<input name='testValue' type='text' class='form-control' id='exampleInputEmail1' placeholder='000' required>
+					<input name='testValue' type='number' class='form-control' id='exampleInputEmail1' placeholder='000' required>
 					<br>
 			        Input Reliability
 			        <select name="sig" class="form-control">
@@ -415,7 +403,7 @@
 					?>
 					<hr>
 					Test Value
-					<input name='testValue' type='text' class='form-control' id='exampleInputEmail1' placeholder='000' required>
+					<input name='testValue' type='number' class='form-control' id='exampleInputEmail1' placeholder='000' required>
 					<br>
 			        Input Reliability
 			        <select name="sig" class="form-control">
