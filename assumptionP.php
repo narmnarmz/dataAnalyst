@@ -57,8 +57,8 @@
             </tr>
                 <?php 
                 $loop=0;
-                $zscore = array(1.645, 1.96, 2.575);
-                $onetail = array(1.282, 1.645, 2.326);
+                $zscore = array(1.6449, 1.96, 2.5758);
+                $onetail = array(1.2816, 1.6449, 2.3263);
                 foreach (array_keys($group) as $paramName) {
                     $loop++;
                     $n=$row-1;
@@ -72,7 +72,7 @@
                     echo "<td>".$_POST["groupName".$paramName]."</td>";                
                     echo "<td>".$a."</td>";
                     echo "<td>".$p."</td>";
-                    echo "<td>".number_format(($p-$ptest)/sqrt(($ptest*(1-$ptest))/$n),3,'.',',')."</td>";
+                    echo "<td>".number_format(($p-$ptest)/sqrt(($ptest*(1-$ptest))/$n),4,'.',',')."</td>";
                     echo "<td>".$onetail[$_POST['sig']]."</td>";
                     echo "<td>".'-'.$zscore[$_POST['sig']]."</td>";
                     echo "<td>".$zscore[$_POST['sig']]."</td>";

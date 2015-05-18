@@ -19,77 +19,93 @@
         </nav>
         <h3 class="text-muted">Data Analyst for Business</h3>
     </div>
-    	<h2>ผลการประมาณค่าสัดส่วนของประชากร (P)</h2>
+    	<h2>ผลการประมาณค่าสัดส่วนของประชากร (P1-P2)</h2>
     	<?php 
             $row = 1;
-            $group1 = array();
-            $group2 = array();
+            $pn = array();
+            $case = array();
             if (($handle = fopen("uploads/data.csv", "r")) !== FALSE) {
                 //$data = fgetcsv($handle, 1000, ",");
                 while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                     $num = count($data);
                     $row++;
-                    $loop=0;
-                    for ($c=0; $c < $num; $c++) {
-                        $loop++;
-                        switch ($loop) {
-                            case '1':
-                                if (array_key_exists($data[$c], $group1)) {
-                                    $group1[$data[$c]] = $group1[$data[$c]]+1;
-                                } 
-                                else
-                                {
-                                    $group1[$data[$c]] = 1;
-                                }
-                                break;
-                            
-                            case '2':
-                                if (array_key_exists($data[$c], $group2)) {
-                                    $group2[$data[$c]] = $group2[$data[$c]]+1;
-                                } 
-                                else
-                                {
-                                    $group2[$data[$c]] = 1;
-                                }
-                                break;
-
-                            default :
-                            break;
+                    if (array_key_exists($data[0], $pn)) {
+                        $pn[$data[0]] = $pn[$data[0]]+1;
+                        if ($data[1]==$_POST['case']) {
+                            if (array_key_exists($data[0], $case)) {
+                                $case[$data[0]] = $case[$data[0]]+1;
+                            }
+                            else
+                            {
+                                $case[$data[0]] = 1;
+                            }
                         }
-                    }
+                     }
+                     else
+                     {
+                        $pn[$data[0]] = 1;
+                     }
+
                 }
                 fclose($handle);
             }
-            print_r($group1);
-            print_r($group2)
+            // print_r($pn);
+            // print_r($case);
+            // var_dump($_POST);
+            $rel= array('90%','95%', '99%');
+            $zscore = array(1.6449, 1.96, 2.5758);
+            $p1 = $case[1]/$pn[1];
+            $p2 = $case[2]/$pn[2];
+            $p = abs($p1-$p2);
+            $z=$zscore[$_POST['sig']]* sqrt((($p1*(1-$p1))/$pn[1])+(($p2*(1-$p2))/$pn[2]));
     	?>
         <table class="table table-bordered">
             <tr class="active">
-                <th>Group</th>
                 <th>Case</th>
+                <th>Group</th>
                 <th>N</th>
-                <th>Point</th>
+                <th>กรณีที่สนใจ</th>
+                <th>Mean</th>
             </tr>
             <tr>
                 <?php 
-                echo "<td rowspan='3'>".$_POST['groupName1']."</td>";
-                echo "<td>".$_POST['colName1']."</td>";
-                echo "<td></td>";
-                echo "<td></td>";
+                echo "<td rowspan='3'>".$_POST['caseLabel']."</td>";
+                echo "<td>".$_POST['groupName1']."</td>";
+                echo "<td>".$pn['1']."</td>";
+                echo "<td>".$case[1]."</td>";
+                echo "<td>".$p1."</td>";
                  ?>
             </tr>
             <tr>
                 <?php 
-                echo "<td>".$_POST['colName1']."</td>";
-                echo "<td></td>";
-                echo "<td></td>";
+                echo "<td>".$_POST['groupName2']."</td>";
+                echo "<td>".$pn['2']."</td>";
+                echo "<td>".$case[2]."</td>";
+                echo "<td>".$p2."</td>";
                  ?>
             </tr>
             <tr>
                 <td>Total</td>
-                <td colspan="2"><?php echo $row-1 ?></td>
+                <td colspan="3"><?php echo $row-1 ?></td>
             </tr>
-            
+        </table>
+
+        <table class="table table-bordered">
+            <tr class="active">
+                <th>Reliability</th>
+                <th>P1-P2</th>
+                <th>Lower Bound</th>
+                <th>Upper Bound</th>
+            </tr>
+            <tr>
+                <?php 
+
+                echo "<td>".$rel[$_POST['sig']]."</td>";
+                echo "<td>".$p."</td>";                
+                echo "<td>".number_format(($p-$z),4,'.',',')."</td>";
+                echo "<td>".number_format(($p+$z),4,'.',',')."</td>";
+                ?>
+            </tr>
         </table>
         <div style="margin-bottom: 20px;">
             <a class="btn btn-success" href="/dataanalyst">HOME</a>
@@ -101,5 +117,5 @@
             }
         </script>
 
-        <?php var_dump($a); ?>
+        <?php //var_dump($a); ?>
 <?php include "footer.php"; ?>

@@ -87,10 +87,10 @@
                     $t=($mean-$_POST['testValue'])/($sd/sqrt($n));
                     // $t=$tArray[$n-2][$_POST["sig"]];
                     echo "<td>".$n."</td>";
-                    echo "<td>".number_format($mean,3,'.',',')."</td>";
-                    echo "<td>".number_format($sd,3,'.',',')."</td>";
+                    echo "<td>".number_format($mean,4,'.',',')."</td>";
+                    echo "<td>".number_format($sd,4,'.',',')."</td>";
                     echo "<td>".$rel[$_POST["sig"]]."</td>";
-                    echo "<td>".number_format($t,3,'.',',')."</td>";
+                    echo "<td>".number_format($t,4,'.',',')."</td>";
                     echo "<td>".$tArray[$n-2][$onetail[$_POST['sig']]]."</td>";
                     echo "<td>"."-".$tArray[$n-2][$_POST["sig"]]."</td>";
                     echo "<td>".$tArray[$n-2][$_POST["sig"]]."</td>";
