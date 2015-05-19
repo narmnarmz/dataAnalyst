@@ -47,8 +47,8 @@
                 <th>Category</th>
                 <th>N</th>
                 <th>Point</th>
-                <th>Upper Bound</th>
                 <th>Lower Bound</th>
+                <th>Upper Bound</th>
                 <th>Z</th>
             </tr>
                 <?php 
@@ -65,8 +65,8 @@
                     echo "<td>".$_POST["groupName".$paramName]."</td>";                
                     echo "<td>".$a."</td>";
                     echo "<td>".$p."</td>";
-                    echo "<td>".number_format($upper,4,'.',',')."</td>";
                     echo "<td>".number_format($lower,4,'.',',')."</td>";
+                    echo "<td>".number_format($upper,4,'.',',')."</td>";
                     if ($loop<=1) {
                         echo "<td rowspan='3'>".$zscore[$_POST['sig']]."</td>";
                     }
