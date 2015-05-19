@@ -255,8 +255,9 @@
 						echo "</div>";
 					}
 					?>
+
 					<hr>Column 2 Setting<br>
-					เลือกกรณีที่ต้องการประมาณผลต่างระหว่างสัดส่วน<br>
+					<b>เลือกกรณีที่ต้องการประมาณผลต่างระหว่างสัดส่วน</b><br>
 					<?php
 					$loop=0;
 					foreach (array_keys($group) as $paramName) {
@@ -276,7 +277,7 @@
 					}
 					//print_r($groupuu);	
 					?>
-					<br><br>ตั้งชื่อกรณีที่ต้องการประมาณผลต่างระหว่างสัดส่วน<br>
+					<br><br><b>ตั้งชื่อกรณีที่ต้องการประมาณผลต่างระหว่างสัดส่วน</b><br>
 					<input type="text" name="caseLabel" class="form-control" placeholder="Case Label" required>
 
 					<hr>

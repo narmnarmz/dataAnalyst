@@ -49,7 +49,7 @@
                 <th>Point</th>
                 <th>Upper Bound</th>
                 <th>Lower Bound</th>
-                <th>Asymp. Sig. (2-tailed)</th>
+                <th>Z</th>
             </tr>
                 <?php 
                 $loop=0;

@@ -30,21 +30,21 @@
                     $num = count($data);
                     $row++;
                     if (array_key_exists($data[0], $pn)) {
-                        $pn[$data[0]] = $pn[$data[0]]+1;
-                        if ($data[1]==$_POST['case']) {
-                            if (array_key_exists($data[0], $case)) {
-                                $case[$data[0]] = $case[$data[0]]+1;
-                            }
-                            else
-                            {
-                                $case[$data[0]] = 1;
-                            }
-                        }
-                     }
-                     else
-                     {
+                        $pn[$data[0]]++;
+                    }
+                    else
+                    {
                         $pn[$data[0]] = 1;
-                     }
+                    }
+                    if ($data[1]==$_POST['case']) {
+                        if (array_key_exists($data[0], $case)) {
+                            $case[$data[0]]++;
+                        }
+                        else
+                        {
+                            $case[$data[0]]=1;
+                        }
+                    }
 
                 }
                 fclose($handle);
@@ -73,7 +73,7 @@
                 echo "<td>".$_POST['groupName1']."</td>";
                 echo "<td>".$pn['1']."</td>";
                 echo "<td>".$case[1]."</td>";
-                echo "<td>".$p1."</td>";
+                echo "<td>".number_format($p1,4,'.',',')."</td>";
                  ?>
             </tr>
             <tr>
@@ -81,7 +81,7 @@
                 echo "<td>".$_POST['groupName2']."</td>";
                 echo "<td>".$pn['2']."</td>";
                 echo "<td>".$case[2]."</td>";
-                echo "<td>".$p2."</td>";
+                echo "<td>".number_format($p2,4,'.',',')."</td>";
                  ?>
             </tr>
             <tr>
@@ -101,7 +101,7 @@
                 <?php 
 
                 echo "<td>".$rel[$_POST['sig']]."</td>";
-                echo "<td>".$p."</td>";                
+                echo "<td>".number_format($p,4,'.',',')."</td>";                
                 echo "<td>".number_format(($p-$z),4,'.',',')."</td>";
                 echo "<td>".number_format(($p+$z),4,'.',',')."</td>";
                 ?>

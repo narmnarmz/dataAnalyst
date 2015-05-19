@@ -51,8 +51,8 @@
                 <tr class="active">
                     <th></th>
                     <th>N</th>
-                    <th>SD</th>
-                    <th>V</th>
+                    <th>Standard Deviation</th>
+                    <th>Variance</th>
                     <th>MEAN</th>
                 </tr>
                 <tr>
