@@ -57,8 +57,8 @@
             </tr>
                 <?php 
                 $loop=0;
-                $zscore = array(1.6449, 1.96, 2.5758);
-                $onetail = array(1.2816, 1.6449, 2.3263);
+                $onetail  = array(1.6449, 1.96, 2.5758);
+                $zscore= array(1.2816, 1.6449, 2.3263);
                 foreach (array_keys($group) as $paramName) {
                     $loop++;
                     $n=$row-1;

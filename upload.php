@@ -404,7 +404,7 @@
 					?>
 					<hr>
 					Test Value
-					<input name='testValue' type='number' class='form-control' id='exampleInputEmail1' placeholder='000' required>
+					<input name='testValue' type='text' class='form-control' id='exampleInputEmail1' placeholder='000' required>
 					<br>
 			        Input Reliability
 			        <select name="sig" class="form-control">
