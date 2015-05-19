@@ -53,7 +53,7 @@
             </tr>
                 <?php 
                 $loop=0;
-                $zscore = array(1.6449, 1.96, 2.5758);
+                $zscore = array(0=>1.6449, 1=>1.96, 2=>2.5758);
                 foreach (array_keys($group) as $paramName) {
                     $loop++;
                     $p = $group[$paramName]/($row-1);
