@@ -77,7 +77,8 @@
                     <th>Upper (2-tails)</th>
                 </tr>
                 <tr>
-                    <?php 
+                    <?php
+
                     $rel = array("90%", "95%", "98%", "99%", "99.8%" ,"99.9%");
                     $sig = array(0.1, 0.05, 0.02, 0.01, 0.002 ,0.001);
                     $onetail = array(1=>0,3=>2);
@@ -85,15 +86,24 @@
                     $mean = array_sum($group)/$n;
                     $sd = sd($group);
                     $t=($mean-$_POST['testValue'])/($sd/sqrt($n));
+
+                    try {
+                        $Ttable2=$tArray[$n-2][$_POST["sig"]];
+                        $Ttable1=$tArray[$n-2][$onetail[$_POST["sig"]]];
+                    } catch (Exception $e) {
+                        $Ttable2=$tArray[200][$_POST["sig"]];
+                        $Ttable1=$tArray[200][$onetail[$_POST["sig"]]];
+                    }
+
                     // $t=$tArray[$n-2][$_POST["sig"]];
                     echo "<td>".$n."</td>";
                     echo "<td>".number_format($mean,4,'.',',')."</td>";
                     echo "<td>".number_format($sd,4,'.',',')."</td>";
                     echo "<td>".$rel[$_POST["sig"]]."</td>";
                     echo "<td>".number_format($t,4,'.',',')."</td>";
-                    echo "<td>".$tArray[$n-2][$onetail[$_POST['sig']]]."</td>";
-                    echo "<td>"."-".$tArray[$n-2][$_POST["sig"]]."</td>";
-                    echo "<td>".$tArray[$n-2][$_POST["sig"]]."</td>";
+                    echo "<td>".$Ttable1."</td>";
+                    echo "<td>"."-".$Ttable2."</td>";
+                    echo "<td>".$Ttable2."</td>";
                     echo "<br>";
                      ?>
                 </tr>
