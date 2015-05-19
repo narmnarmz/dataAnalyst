@@ -65,8 +65,8 @@
                     echo "<td>".$_POST["groupName".$paramName]."</td>";                
                     echo "<td>".$a."</td>";
                     echo "<td>".$p."</td>";
-                    echo "<td>".$upper."</td>";
-                    echo "<td>".$lower."</td>";
+                    echo "<td>".number_format($upper,4,'.',',')."</td>";
+                    echo "<td>".number_format($lower,4,'.',',')."</td>";
                     if ($loop<=1) {
                         echo "<td rowspan='3'>".$zscore[$_POST['sig']]."</td>";
                     }

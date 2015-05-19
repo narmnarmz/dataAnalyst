@@ -62,9 +62,9 @@
                     $v1=sd($group[$key[0]])*sd($group[$key[0]]);
                     $mean1=array_sum($group[$key[0]])/count($group[$key[0]]);
                     echo "<td>".count($group[$key[0]])."</td>";
-                    echo "<td>".sd($group[$key[0]])."</td>";
-                    echo "<td>".$v1."</td>";
-                    echo "<td>".$mean1."</td>";
+                    echo "<td>".number_format(sd($group[$key[0]]),4,'.',',')."</td>";
+                    echo "<td>".number_format($v1,4,'.',',')."</td>";
+                    echo "<td>".number_format($mean1,4,'.',',')."</td>";
                      ?>
                 </tr>
                 <tr>
@@ -73,9 +73,9 @@
                     $v2=sd($group[$key[1]])*sd($group[$key[1]]);
                     $mean2=array_sum($group[$key[1]])/count($group[$key[1]]);
                     echo "<td>".count($group[$key[1]])."</td>";
-                    echo "<td>".sd($group[$key[1]])."</td>";
-                    echo "<td>".$v2."</td>";
-                    echo "<td>".$mean2."</td>";
+                    echo "<td>".number_format(sd($group[$key[1]]),4,'.',',')."</td>";
+                    echo "<td>".number_format($v2,4,'.',',')."</td>";
+                    echo "<td>".number_format($mean2,4,'.',',')."</td>";
                      ?>
                 </tr>
                 <tr>
@@ -92,7 +92,7 @@
                         $mean=$mean2-$mean1;
                     }
 
-                    echo "<td>".$mean."</td>";
+                    echo "<td>".number_format($mean,4,'.',',')."</td>";
                      ?>
                 </tr>
             </table>
@@ -124,9 +124,9 @@
                     echo "<td>".$rel[$_POST["sig"]]."</td>";
                     echo "<td>".$sig[$_POST["sig"]]."</td>";
                     echo "<td>".$t."</td>";
-                    echo "<td>".$sp."</td>";
-                    echo "<td>".$lower."</td>";
-                    echo "<td>".$upper."</td>";
+                    echo "<td>".number_format($sp,4,'.',',')."</td>";
+                    echo "<td>".number_format($lower,4,'.',',')."</td>";
+                    echo "<td>".number_format($upper,4,'.',',')."</td>";
                     ?>
 
                 </tr>
