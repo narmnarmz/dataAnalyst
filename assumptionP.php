@@ -58,8 +58,8 @@
                 <?php 
                 $loop=0;
                 
-                $onetail  = array('0'=>1.6449, '1'=>1.96, '2'=>2.5758);
-                $zscore= array('0'=>1.2816, '1'=>1.6449, '2'=>2.3263);
+                $zscore  = array('0'=>1.6449, '1'=>1.96, '2'=>2.5758);
+                $onetail= array('0'=>1.2816, '1'=>1.6449, '2'=>2.3263);
                 foreach (array_keys($group) as $paramName) {
                     $loop++;
                     $n=$row-1;
